@@ -8,7 +8,7 @@ This package supports Python 2 and 3.
 Details
 -------
 
-The API client code in this repository is completely auto-generated from Blockstore's OpenAPI specification file, using `openapi-generator <https://github.com/OpenAPITools/openapi-generator>`_. Do not edit the code in `blockstore_api`, as your changes will be lost. Instead, update the Blockstore API spec file, then run `make api-client` in this repository to update the auto-generated code.
+The API client code in this repository is mostly auto-generated from Blockstore's OpenAPI specification file, using `openapi-generator <https://github.com/OpenAPITools/openapi-generator>`_. Do not edit the code in `blockstore_api`, as your changes will be lost (except for a few of the models, which can be edited). Instead, update the Blockstore API spec file, then run `make api-client` in this repository to update the auto-generated code.
 
 Usage Example
 -------------
@@ -30,13 +30,13 @@ Create a computer science taxonomy::
 Check what tags an entity has::
 
     >>> entity_id = dict(external_id="Open edX", entity_type="software")
-    >>> edx = tagstore.get_entity(**entity_id)
-    >>> edx.tags
+    >>> tagstore.get_entity(**entity_id).tags
     []
 
 Apply a tag to the entity::
 
-    >>> tagstore.add_tag_to_entity(**entity_id, taxonomy_id=python_tag.taxonomy_id, tag_name=python_tag.name)
+    >>> tagstore.add_tag_to_entity(**entity_id, **python_tag.id)
+    >>> tagstore.get_entity(**entity_id).tags
 
 License
 -------
