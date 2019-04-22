@@ -13,7 +13,7 @@ The API client code in this repository is mostly auto-generated from Blockstore'
 Usage Example
 -------------
 
-Using the Tagstore API::
+Using the Tagstore API (no additional configuration is required to connect to devstack Tagstore)::
 
     >>> from blockstore_api import TagstoreApi, Taxonomy, Tag, Entity
     >>> tagstore = TagstoreApi()
@@ -37,13 +37,16 @@ Apply a tag to the entity::
 
     >>> tagstore.add_tag_to_entity(**entity_id, **python_tag.id)
     >>> tagstore.get_entity(**entity_id).tags
+    [
+        {'name': 'Python', 'path': '42:Programming Languages:Python:', 'taxonomy_id': '42'},
+    ]
+
+Note that in Python2, the ``add_tag_to_entity`` call must be written differently, e.g. ``tagstore.add_tag_to_entity(taxonomy_id=python_tag.taxonomy_id, name=python_tag.name, **entity_id)``
 
 License
 -------
 
-The code in this repository is licensed under version 3 of the AGPL unless otherwise noted. Please see the LICENSE_ file for details.
-
-.. _LICENSE: https://github.com/edx/{{cookiecutter.repo_name}}/blob/master/LICENSE
+The code in this repository is licensed under version 2 of the Apache License unless otherwise noted. Please see the `LICENSE <LICENSE>`_ file for details.
 
 How To Contribute
 -----------------

@@ -36,19 +36,19 @@ class TagstoreApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def add_tag_to_entity(self, entity_type, external_id, tag_name, taxonomy_id, **kwargs):  # noqa: E501
+    def add_tag_to_entity(self, entity_type, external_id, name, taxonomy_id, **kwargs):  # noqa: E501
         """add_tag_to_entity  # noqa: E501
 
         Add the given tag to the entity. The entity will be auto-created if it isn't yet tracked (persisted) in Tagstore's database.  Only raises an error if the tag does not exist.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.add_tag_to_entity(entity_type, external_id, tag_name, taxonomy_id, async_req=True)
+        >>> thread = api.add_tag_to_entity(entity_type, external_id, name, taxonomy_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str entity_type: (required)
         :param str external_id: (required)
-        :param str tag_name: (required)
+        :param str name: (required)
         :param str taxonomy_id: (required)
         :return: Tag
                  If the method is called asynchronously,
@@ -56,24 +56,24 @@ class TagstoreApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.add_tag_to_entity_with_http_info(entity_type, external_id, tag_name, taxonomy_id, **kwargs)  # noqa: E501
+            return self.add_tag_to_entity_with_http_info(entity_type, external_id, name, taxonomy_id, **kwargs)  # noqa: E501
         else:
-            (data) = self.add_tag_to_entity_with_http_info(entity_type, external_id, tag_name, taxonomy_id, **kwargs)  # noqa: E501
+            (data) = self.add_tag_to_entity_with_http_info(entity_type, external_id, name, taxonomy_id, **kwargs)  # noqa: E501
             return data
 
-    def add_tag_to_entity_with_http_info(self, entity_type, external_id, tag_name, taxonomy_id, **kwargs):  # noqa: E501
+    def add_tag_to_entity_with_http_info(self, entity_type, external_id, name, taxonomy_id, **kwargs):  # noqa: E501
         """add_tag_to_entity  # noqa: E501
 
         Add the given tag to the entity. The entity will be auto-created if it isn't yet tracked (persisted) in Tagstore's database.  Only raises an error if the tag does not exist.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.add_tag_to_entity_with_http_info(entity_type, external_id, tag_name, taxonomy_id, async_req=True)
+        >>> thread = api.add_tag_to_entity_with_http_info(entity_type, external_id, name, taxonomy_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str entity_type: (required)
         :param str external_id: (required)
-        :param str tag_name: (required)
+        :param str name: (required)
         :param str taxonomy_id: (required)
         :return: Tag
                  If the method is called asynchronously,
@@ -82,7 +82,7 @@ class TagstoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ['entity_type', 'external_id', 'tag_name', 'taxonomy_id']  # noqa: E501
+        all_params = ['entity_type', 'external_id', 'name', 'taxonomy_id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -104,10 +104,10 @@ class TagstoreApi(object):
         if ('external_id' not in local_var_params or
                 local_var_params['external_id'] is None):
             raise ApiValueError("Missing the required parameter `external_id` when calling `add_tag_to_entity`")  # noqa: E501
-        # verify the required parameter 'tag_name' is set
-        if ('tag_name' not in local_var_params or
-                local_var_params['tag_name'] is None):
-            raise ApiValueError("Missing the required parameter `tag_name` when calling `add_tag_to_entity`")  # noqa: E501
+        # verify the required parameter 'name' is set
+        if ('name' not in local_var_params or
+                local_var_params['name'] is None):
+            raise ApiValueError("Missing the required parameter `name` when calling `add_tag_to_entity`")  # noqa: E501
         # verify the required parameter 'taxonomy_id' is set
         if ('taxonomy_id' not in local_var_params or
                 local_var_params['taxonomy_id'] is None):
@@ -120,8 +120,8 @@ class TagstoreApi(object):
             path_params['entity_type'] = local_var_params['entity_type']  # noqa: E501
         if 'external_id' in local_var_params:
             path_params['external_id'] = local_var_params['external_id']  # noqa: E501
-        if 'tag_name' in local_var_params:
-            path_params['tag_name'] = local_var_params['tag_name']  # noqa: E501
+        if 'name' in local_var_params:
+            path_params['name'] = local_var_params['name']  # noqa: E501
         if 'taxonomy_id' in local_var_params:
             path_params['taxonomy_id'] = local_var_params['taxonomy_id']  # noqa: E501
 
@@ -141,7 +141,7 @@ class TagstoreApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/tagstore/api/v1/entities/{entity_type}/{external_id}/tags/{taxonomy_id}/{tag_name}', 'POST',
+            '/tagstore/api/v1/entities/{entity_type}/{external_id}/tags/{taxonomy_id}/{name}', 'POST',
             path_params,
             query_params,
             header_params,
@@ -456,41 +456,41 @@ class TagstoreApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def delete_taxonomy_tag(self, id, tag_name, **kwargs):  # noqa: E501
+    def delete_taxonomy_tag(self, id, name, **kwargs):  # noqa: E501
         """delete_taxonomy_tag  # noqa: E501
 
         Delete a tag  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.delete_taxonomy_tag(id, tag_name, async_req=True)
+        >>> thread = api.delete_taxonomy_tag(id, name, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param int id: A unique integer value identifying this taxonomy. (required)
-        :param str tag_name: (required)
+        :param str name: (required)
         :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.delete_taxonomy_tag_with_http_info(id, tag_name, **kwargs)  # noqa: E501
+            return self.delete_taxonomy_tag_with_http_info(id, name, **kwargs)  # noqa: E501
         else:
-            (data) = self.delete_taxonomy_tag_with_http_info(id, tag_name, **kwargs)  # noqa: E501
+            (data) = self.delete_taxonomy_tag_with_http_info(id, name, **kwargs)  # noqa: E501
             return data
 
-    def delete_taxonomy_tag_with_http_info(self, id, tag_name, **kwargs):  # noqa: E501
+    def delete_taxonomy_tag_with_http_info(self, id, name, **kwargs):  # noqa: E501
         """delete_taxonomy_tag  # noqa: E501
 
         Delete a tag  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.delete_taxonomy_tag_with_http_info(id, tag_name, async_req=True)
+        >>> thread = api.delete_taxonomy_tag_with_http_info(id, name, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param int id: A unique integer value identifying this taxonomy. (required)
-        :param str tag_name: (required)
+        :param str name: (required)
         :return: object
                  If the method is called asynchronously,
                  returns the request thread.
@@ -498,7 +498,7 @@ class TagstoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ['id', 'tag_name']  # noqa: E501
+        all_params = ['id', 'name']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -516,18 +516,18 @@ class TagstoreApi(object):
         if ('id' not in local_var_params or
                 local_var_params['id'] is None):
             raise ApiValueError("Missing the required parameter `id` when calling `delete_taxonomy_tag`")  # noqa: E501
-        # verify the required parameter 'tag_name' is set
-        if ('tag_name' not in local_var_params or
-                local_var_params['tag_name'] is None):
-            raise ApiValueError("Missing the required parameter `tag_name` when calling `delete_taxonomy_tag`")  # noqa: E501
+        # verify the required parameter 'name' is set
+        if ('name' not in local_var_params or
+                local_var_params['name'] is None):
+            raise ApiValueError("Missing the required parameter `name` when calling `delete_taxonomy_tag`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
         if 'id' in local_var_params:
             path_params['id'] = local_var_params['id']  # noqa: E501
-        if 'tag_name' in local_var_params:
-            path_params['tag_name'] = local_var_params['tag_name']  # noqa: E501
+        if 'name' in local_var_params:
+            path_params['name'] = local_var_params['name']  # noqa: E501
 
         query_params = []
 
@@ -545,7 +545,7 @@ class TagstoreApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/tagstore/api/v1/taxonomies/{id}/tags/{tag_name}', 'DELETE',
+            '/tagstore/api/v1/taxonomies/{id}/tags/{name}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -560,19 +560,19 @@ class TagstoreApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def entity_has_tag(self, entity_type, external_id, tag_name, taxonomy_id, **kwargs):  # noqa: E501
+    def entity_has_tag(self, entity_type, external_id, name, taxonomy_id, **kwargs):  # noqa: E501
         """entity_has_tag  # noqa: E501
 
         Does this entity have the given tag? Use this if you need to check if an entity has one specific tag, as it will be faster than loading the entity's entire tag list. Raises 404 if the tag does not exist.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.entity_has_tag(entity_type, external_id, tag_name, taxonomy_id, async_req=True)
+        >>> thread = api.entity_has_tag(entity_type, external_id, name, taxonomy_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str entity_type: (required)
         :param str external_id: (required)
-        :param str tag_name: (required)
+        :param str name: (required)
         :param str taxonomy_id: (required)
         :return: Tag
                  If the method is called asynchronously,
@@ -580,24 +580,24 @@ class TagstoreApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.entity_has_tag_with_http_info(entity_type, external_id, tag_name, taxonomy_id, **kwargs)  # noqa: E501
+            return self.entity_has_tag_with_http_info(entity_type, external_id, name, taxonomy_id, **kwargs)  # noqa: E501
         else:
-            (data) = self.entity_has_tag_with_http_info(entity_type, external_id, tag_name, taxonomy_id, **kwargs)  # noqa: E501
+            (data) = self.entity_has_tag_with_http_info(entity_type, external_id, name, taxonomy_id, **kwargs)  # noqa: E501
             return data
 
-    def entity_has_tag_with_http_info(self, entity_type, external_id, tag_name, taxonomy_id, **kwargs):  # noqa: E501
+    def entity_has_tag_with_http_info(self, entity_type, external_id, name, taxonomy_id, **kwargs):  # noqa: E501
         """entity_has_tag  # noqa: E501
 
         Does this entity have the given tag? Use this if you need to check if an entity has one specific tag, as it will be faster than loading the entity's entire tag list. Raises 404 if the tag does not exist.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.entity_has_tag_with_http_info(entity_type, external_id, tag_name, taxonomy_id, async_req=True)
+        >>> thread = api.entity_has_tag_with_http_info(entity_type, external_id, name, taxonomy_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str entity_type: (required)
         :param str external_id: (required)
-        :param str tag_name: (required)
+        :param str name: (required)
         :param str taxonomy_id: (required)
         :return: Tag
                  If the method is called asynchronously,
@@ -606,7 +606,7 @@ class TagstoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ['entity_type', 'external_id', 'tag_name', 'taxonomy_id']  # noqa: E501
+        all_params = ['entity_type', 'external_id', 'name', 'taxonomy_id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -628,10 +628,10 @@ class TagstoreApi(object):
         if ('external_id' not in local_var_params or
                 local_var_params['external_id'] is None):
             raise ApiValueError("Missing the required parameter `external_id` when calling `entity_has_tag`")  # noqa: E501
-        # verify the required parameter 'tag_name' is set
-        if ('tag_name' not in local_var_params or
-                local_var_params['tag_name'] is None):
-            raise ApiValueError("Missing the required parameter `tag_name` when calling `entity_has_tag`")  # noqa: E501
+        # verify the required parameter 'name' is set
+        if ('name' not in local_var_params or
+                local_var_params['name'] is None):
+            raise ApiValueError("Missing the required parameter `name` when calling `entity_has_tag`")  # noqa: E501
         # verify the required parameter 'taxonomy_id' is set
         if ('taxonomy_id' not in local_var_params or
                 local_var_params['taxonomy_id'] is None):
@@ -644,8 +644,8 @@ class TagstoreApi(object):
             path_params['entity_type'] = local_var_params['entity_type']  # noqa: E501
         if 'external_id' in local_var_params:
             path_params['external_id'] = local_var_params['external_id']  # noqa: E501
-        if 'tag_name' in local_var_params:
-            path_params['tag_name'] = local_var_params['tag_name']  # noqa: E501
+        if 'name' in local_var_params:
+            path_params['name'] = local_var_params['name']  # noqa: E501
         if 'taxonomy_id' in local_var_params:
             path_params['taxonomy_id'] = local_var_params['taxonomy_id']  # noqa: E501
 
@@ -665,7 +665,7 @@ class TagstoreApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/tagstore/api/v1/entities/{entity_type}/{external_id}/tags/{taxonomy_id}/{tag_name}', 'GET',
+            '/tagstore/api/v1/entities/{entity_type}/{external_id}/tags/{taxonomy_id}/{name}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -976,41 +976,41 @@ class TagstoreApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_taxonomy_tag(self, id, tag_name, **kwargs):  # noqa: E501
+    def get_taxonomy_tag(self, id, name, **kwargs):  # noqa: E501
         """get_taxonomy_tag  # noqa: E501
 
         Get a specific tag in the taxonomy  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_taxonomy_tag(id, tag_name, async_req=True)
+        >>> thread = api.get_taxonomy_tag(id, name, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param int id: A unique integer value identifying this taxonomy. (required)
-        :param str tag_name: (required)
+        :param str name: (required)
         :return: Tag
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_taxonomy_tag_with_http_info(id, tag_name, **kwargs)  # noqa: E501
+            return self.get_taxonomy_tag_with_http_info(id, name, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_taxonomy_tag_with_http_info(id, tag_name, **kwargs)  # noqa: E501
+            (data) = self.get_taxonomy_tag_with_http_info(id, name, **kwargs)  # noqa: E501
             return data
 
-    def get_taxonomy_tag_with_http_info(self, id, tag_name, **kwargs):  # noqa: E501
+    def get_taxonomy_tag_with_http_info(self, id, name, **kwargs):  # noqa: E501
         """get_taxonomy_tag  # noqa: E501
 
         Get a specific tag in the taxonomy  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_taxonomy_tag_with_http_info(id, tag_name, async_req=True)
+        >>> thread = api.get_taxonomy_tag_with_http_info(id, name, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param int id: A unique integer value identifying this taxonomy. (required)
-        :param str tag_name: (required)
+        :param str name: (required)
         :return: Tag
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1018,7 +1018,7 @@ class TagstoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ['id', 'tag_name']  # noqa: E501
+        all_params = ['id', 'name']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1036,18 +1036,18 @@ class TagstoreApi(object):
         if ('id' not in local_var_params or
                 local_var_params['id'] is None):
             raise ApiValueError("Missing the required parameter `id` when calling `get_taxonomy_tag`")  # noqa: E501
-        # verify the required parameter 'tag_name' is set
-        if ('tag_name' not in local_var_params or
-                local_var_params['tag_name'] is None):
-            raise ApiValueError("Missing the required parameter `tag_name` when calling `get_taxonomy_tag`")  # noqa: E501
+        # verify the required parameter 'name' is set
+        if ('name' not in local_var_params or
+                local_var_params['name'] is None):
+            raise ApiValueError("Missing the required parameter `name` when calling `get_taxonomy_tag`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
         if 'id' in local_var_params:
             path_params['id'] = local_var_params['id']  # noqa: E501
-        if 'tag_name' in local_var_params:
-            path_params['tag_name'] = local_var_params['tag_name']  # noqa: E501
+        if 'name' in local_var_params:
+            path_params['name'] = local_var_params['name']  # noqa: E501
 
         query_params = []
 
@@ -1065,7 +1065,7 @@ class TagstoreApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/tagstore/api/v1/taxonomies/{id}/tags/{tag_name}', 'GET',
+            '/tagstore/api/v1/taxonomies/{id}/tags/{name}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -1184,19 +1184,19 @@ class TagstoreApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def remove_tag_from_entity(self, entity_type, external_id, tag_name, taxonomy_id, **kwargs):  # noqa: E501
+    def remove_tag_from_entity(self, entity_type, external_id, name, taxonomy_id, **kwargs):  # noqa: E501
         """Remove the given tag from the entity.  # noqa: E501
 
         Only raises an error if the tag does not exist.  We do not provide an option to auto-delete the tag from the taxonomy if it's not applied to any other entities, because tags can also be removed from entities when entities are deleted, and we want consistent behavior in both cases.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.remove_tag_from_entity(entity_type, external_id, tag_name, taxonomy_id, async_req=True)
+        >>> thread = api.remove_tag_from_entity(entity_type, external_id, name, taxonomy_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str entity_type: (required)
         :param str external_id: (required)
-        :param str tag_name: (required)
+        :param str name: (required)
         :param str taxonomy_id: (required)
         :return: object
                  If the method is called asynchronously,
@@ -1204,24 +1204,24 @@ class TagstoreApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.remove_tag_from_entity_with_http_info(entity_type, external_id, tag_name, taxonomy_id, **kwargs)  # noqa: E501
+            return self.remove_tag_from_entity_with_http_info(entity_type, external_id, name, taxonomy_id, **kwargs)  # noqa: E501
         else:
-            (data) = self.remove_tag_from_entity_with_http_info(entity_type, external_id, tag_name, taxonomy_id, **kwargs)  # noqa: E501
+            (data) = self.remove_tag_from_entity_with_http_info(entity_type, external_id, name, taxonomy_id, **kwargs)  # noqa: E501
             return data
 
-    def remove_tag_from_entity_with_http_info(self, entity_type, external_id, tag_name, taxonomy_id, **kwargs):  # noqa: E501
+    def remove_tag_from_entity_with_http_info(self, entity_type, external_id, name, taxonomy_id, **kwargs):  # noqa: E501
         """Remove the given tag from the entity.  # noqa: E501
 
         Only raises an error if the tag does not exist.  We do not provide an option to auto-delete the tag from the taxonomy if it's not applied to any other entities, because tags can also be removed from entities when entities are deleted, and we want consistent behavior in both cases.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.remove_tag_from_entity_with_http_info(entity_type, external_id, tag_name, taxonomy_id, async_req=True)
+        >>> thread = api.remove_tag_from_entity_with_http_info(entity_type, external_id, name, taxonomy_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str entity_type: (required)
         :param str external_id: (required)
-        :param str tag_name: (required)
+        :param str name: (required)
         :param str taxonomy_id: (required)
         :return: object
                  If the method is called asynchronously,
@@ -1230,7 +1230,7 @@ class TagstoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ['entity_type', 'external_id', 'tag_name', 'taxonomy_id']  # noqa: E501
+        all_params = ['entity_type', 'external_id', 'name', 'taxonomy_id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1252,10 +1252,10 @@ class TagstoreApi(object):
         if ('external_id' not in local_var_params or
                 local_var_params['external_id'] is None):
             raise ApiValueError("Missing the required parameter `external_id` when calling `remove_tag_from_entity`")  # noqa: E501
-        # verify the required parameter 'tag_name' is set
-        if ('tag_name' not in local_var_params or
-                local_var_params['tag_name'] is None):
-            raise ApiValueError("Missing the required parameter `tag_name` when calling `remove_tag_from_entity`")  # noqa: E501
+        # verify the required parameter 'name' is set
+        if ('name' not in local_var_params or
+                local_var_params['name'] is None):
+            raise ApiValueError("Missing the required parameter `name` when calling `remove_tag_from_entity`")  # noqa: E501
         # verify the required parameter 'taxonomy_id' is set
         if ('taxonomy_id' not in local_var_params or
                 local_var_params['taxonomy_id'] is None):
@@ -1268,8 +1268,8 @@ class TagstoreApi(object):
             path_params['entity_type'] = local_var_params['entity_type']  # noqa: E501
         if 'external_id' in local_var_params:
             path_params['external_id'] = local_var_params['external_id']  # noqa: E501
-        if 'tag_name' in local_var_params:
-            path_params['tag_name'] = local_var_params['tag_name']  # noqa: E501
+        if 'name' in local_var_params:
+            path_params['name'] = local_var_params['name']  # noqa: E501
         if 'taxonomy_id' in local_var_params:
             path_params['taxonomy_id'] = local_var_params['taxonomy_id']  # noqa: E501
 
@@ -1289,7 +1289,7 @@ class TagstoreApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/tagstore/api/v1/entities/{entity_type}/{external_id}/tags/{taxonomy_id}/{tag_name}', 'DELETE',
+            '/tagstore/api/v1/entities/{entity_type}/{external_id}/tags/{taxonomy_id}/{name}', 'DELETE',
             path_params,
             query_params,
             header_params,
