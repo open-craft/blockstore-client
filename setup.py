@@ -7,7 +7,7 @@ import os
 import re
 import sys
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 def get_version(*file_paths):
     """
@@ -70,9 +70,7 @@ setup(
     author='OpenCraft',
     author_email='oscm@edx.org',
     url='https://github.com/open-craft/blockstore-client',
-    packages=[
-        'blockstore_api',
-    ],
+    packages=find_packages(),
     include_package_data=True,
     install_requires=load_requirements('requirements/base.txt'),
     license="Apache Software License 2.0",
